@@ -1,7 +1,13 @@
 # Chapel Astro Utilities for PixInsight
 
+> [!WARNING]
+> **Beta testers only.** This development repository contains prerelease
+> versions that may be incomplete or unstable. For normal production use,
+> install Chapel Astro Utilities from the
+> [live repository](https://github.com/GrandPaClanger/pixinsight-toolbox-scripts).
+
 PixInsight JavaScript Runtime scripts published through the Chapel Astro
-Utilities update repository.
+Utilities beta update repository.
 
 PixInsight repository URL:
 
