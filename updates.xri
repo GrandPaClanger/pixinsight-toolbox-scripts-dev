@@ -6,17 +6,17 @@
       </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="packages/ChapelAstroUtilities-3.1.zip"
-               sha1="ef1b6a555de0eb7c232b6aa963679feea267d6c6"
+      <package fileName="packages/ChapelAstroUtilities-3.2-beta1.zip"
+               sha1="2d1d345f3a3f60ab76ba7ccc87c8724021e883d1"
                type="script"
-               releaseDate="20260607">
+               releaseDate="20260618">
          <title>
-            Chapel Astro Utilities 3.1
+            Chapel Astro Utilities 3.2-beta1
          </title>
          <description>
             <p>
-               Installs ImageBatchManager 3.1 and MatchOpenImageSizes 1.0.4 under Script &gt; Chapel Astro Utilities.
-               Version 3.1 renames ImageRenameByFilter to ImageBatchManager to reflect the wider batch rename, append, individual rename, and save-only overwrite workflow.
+               DEV beta package. Installs ScreenTransferAutoStretch 1.0.0-beta1, ImageBatchManager 3.1, and MatchOpenImageSizes 1.0.4 under Script &gt; Chapel Astro Utilities.
+               ScreenTransferAutoStretch applies linked or unlinked automatic screen stretches to selected open images and can reset their ScreenTransferFunction display.
             </p>
          </description>
       </package>

@@ -5,7 +5,7 @@ Utilities update repository.
 
 PixInsight repository URL:
 
-`https://raw.githubusercontent.com/GrandPaClanger/pixinsight-toolbox-scripts/main/`
+`https://raw.githubusercontent.com/GrandPaClanger/pixinsight-toolbox-scripts-dev/main/`
 
 Add it in PixInsight:
 
@@ -44,6 +44,26 @@ compatible, so it should appear once under the new `Chapel Astro Utilities`
 menu after PixInsight refreshes scripts.
 
 ## Scripts
+
+### ScreenTransferAutoStretch
+
+Menu:
+
+`Script > Chapel Astro Utilities > ScreenTransferAutoStretch`
+
+Version:
+
+`1.0.0-beta1`
+
+Purpose:
+
+Applies PixInsight's automatic ScreenTransferFunction stretch to selected open
+images without changing their pixel data.
+
+- Select images individually, or use `Select All` and `Select None`.
+- Use `Linked` to preserve the relative RGB channel balance.
+- Use `Unlinked` to calculate a separate stretch for each RGB channel.
+- Use `Reset Screen Transfer` to remove the STF from selected images.
 
 ### ImageBatchManager
 
@@ -180,11 +200,20 @@ PixInsight menu entry and dialog title are `ImageBatchManager`.
 
 `src/scripts/Toolbox/MatchOpenImageSizes.js`
 
+`src/scripts/Toolbox/ScreenTransferAutoStretch.js`
+
 The update package is:
 
-`packages/ChapelAstroUtilities-3.1.zip`
+`packages/ChapelAstroUtilities-3.2-beta1.zip`
 
 ## Change Log
+
+### Chapel Astro Utilities 3.2-beta1
+
+- DEV beta package.
+- Added ScreenTransferAutoStretch 1.0.0-beta1.
+- Added selectable batch image handling, Select All/None controls, linked and
+  unlinked auto-stretch modes, and ScreenTransferFunction reset.
 
 ### Chapel Astro Utilities 3.1
 

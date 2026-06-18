@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Chapel Astro Utilities for PixInsight</title>
-  <meta name="description" content="Chapel Astro Utilities helps PixInsight users batch rename, save, resize, and visually align open image windows with clean workflow-focused scripts.">
+  <meta name="description" content="Chapel Astro Utilities helps PixInsight users batch rename, save, resize, align, and apply automatic screen stretches to open images.">
   <style>
     :root {
       --bg: #10161a;
@@ -658,7 +658,7 @@
       <div class="hero-inner">
         <div class="hero-copy">
           <h1>Clean, consistent PixInsight workspaces.</h1>
-          <p>Chapel Astro Utilities batch-processes open PixInsight images with clear wizard-led tools: turn long stacked master frame names into readable identifiers, save batches deliberately, and line up open image windows to a chosen reference.</p>
+          <p>Chapel Astro Utilities batch-processes open PixInsight images with focused tools: apply automatic screen stretches, turn long stacked master frame names into readable identifiers, save batches deliberately, and line up open windows to a chosen reference.</p>
           <div class="hero-actions">
             <a class="button primary" href="#install">Install in PixInsight</a>
             <a class="button secondary" href="#guide">Read the user guide</a>
@@ -673,8 +673,8 @@
               <span>L, R, G, B, H, O, S, and OSC rename defaults.</span>
             </div>
             <div>
-              <strong>Visually aligned</strong>
-              <span>Match zoom, frame size, and dimensions to a reference.</span>
+              <strong>Easy inspection</strong>
+              <span>Auto-stretch selected images, then align them for comparison.</span>
             </div>
           </div>
         </div>
@@ -753,9 +753,20 @@
       <div class="section-inner">
         <div class="section-heading">
           <h2>What each utility does.</h2>
-          <p>Both scripts live under the same PixInsight menu, but they solve different workspace problems.</p>
+          <p>All three scripts live under the same PixInsight menu, but they solve different workspace problems.</p>
         </div>
         <div class="guide-grid">
+          <article class="guide-block">
+            <h3>ScreenTransferAutoStretch</h3>
+            <p>A selectable batch utility for making linear images visible without changing their pixel data.</p>
+            <ul>
+              <li>Lists all open main images with individual checkboxes.</li>
+              <li>Includes Select All, Select None, and Refresh controls.</li>
+              <li>Applies a linked RGB stretch to preserve relative channel balance.</li>
+              <li>Applies an unlinked per-channel stretch when independent channel balancing is preferred.</li>
+              <li>Resets the ScreenTransferFunction on the selected images.</li>
+            </ul>
+          </article>
           <article class="guide-block">
             <h3>ImageBatchManager</h3>
             <p>A wizard-led batch naming and save workflow for open image windows. It is especially useful straight after stacking, when mono master frames inherit long file names from the integration process, and it also handles OSC data through editable mappings.</p>
@@ -804,7 +815,7 @@
         </div>
         <div class="install-box">
           <h3>Repository URL</h3>
-          <code class="repo-url">https://raw.githubusercontent.com/GrandPaClanger/pixinsight-toolbox-scripts/main/</code>
+          <code class="repo-url">https://raw.githubusercontent.com/GrandPaClanger/pixinsight-toolbox-scripts-dev/main/</code>
           <ol class="steps">
             <li>Open <code>Resources &gt; Updates &gt; Manage Repositories</code>.</li>
             <li>Add the repository URL above.</li>
@@ -819,9 +830,19 @@
       <div class="section-inner">
         <div class="section-heading">
           <h2>User guide.</h2>
-          <p>The short version: the wizard asks what you want to do, which images are involved, what should happen to open windows, where to save, and then shows a final summary before anything changes.</p>
+          <p>Choose the utility for the job, select the open images involved, and use the focused controls below to stretch, rename, save, or align them.</p>
         </div>
         <div class="guide-grid">
+          <article class="guide-block">
+            <h3>ScreenTransferAutoStretch</h3>
+            <ul>
+              <li><strong>Select images:</strong> tick only the open images whose screen display should change, or use Select All and Select None.</li>
+              <li><strong>Choose Linked:</strong> use one shared stretch for RGB channels to preserve their relative balance.</li>
+              <li><strong>Choose Unlinked:</strong> calculate each RGB channel independently to neutralize strong channel imbalance in the display.</li>
+              <li><strong>Apply Auto Stretch:</strong> updates only the selected images' ScreenTransferFunction display; pixel values remain unchanged.</li>
+              <li><strong>Reset Screen Transfer:</strong> returns the selected images to an identity screen transfer.</li>
+            </ul>
+          </article>
           <article class="guide-block">
             <h3>ImageBatchManager</h3>
             <ul>
@@ -915,7 +936,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <span>Chapel Astro Utilities for PixInsight</span>
-      <span>Current package: Chapel Astro Utilities 3.1</span>
+      <span>Current package: Chapel Astro Utilities 3.2-beta1</span>
       <span>Copyright &copy; 2026 Ian Steane. All rights reserved.</span>
     </div>
   </footer>
