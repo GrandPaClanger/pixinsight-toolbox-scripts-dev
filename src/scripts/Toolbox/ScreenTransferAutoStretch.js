@@ -1,4 +1,5 @@
-// ScreenTransferAutoStretch.js
+// BatchSTFStretch
+// Installed as ScreenTransferAutoStretch.js for beta update compatibility.
 //
 // PixInsight JavaScript Runtime script.
 //
@@ -9,11 +10,11 @@
 //
 // Apply or reset an automatic ScreenTransferFunction on selected open images.
 
-#feature-id    ScreenTransferAutoStretch : Chapel Astro Utilities > ScreenTransferAutoStretch
+#feature-id    BatchSTFStretch : Chapel Astro Utilities > BatchSTFStretch
 #feature-info  Apply a linked or unlinked automatic screen stretch to selected open images, or reset their screen transfer functions.
 
-var TITLE = "ScreenTransferAutoStretch";
-var VERSION = "1.0.0-beta1";
+var TITLE = "BatchSTFStretch";
+var VERSION = "1.0.0-beta2";
 
 var FrameStyle_Box = 1;
 var StdButton_Ok = 1;
@@ -253,7 +254,7 @@ function fillImageTree( tree )
    }
 }
 
-function ScreenTransferAutoStretchDialog()
+function BatchSTFStretchDialog()
 {
    this.__base__ = Dialog;
    this.__base__();
@@ -443,7 +444,7 @@ function ScreenTransferAutoStretchDialog()
    this.updateStatus();
    this.adjustToContents();
 }
-ScreenTransferAutoStretchDialog.prototype = new Dialog;
+BatchSTFStretchDialog.prototype = new Dialog;
 
 function main()
 {
@@ -454,7 +455,7 @@ function main()
       return;
    }
 
-   var dialog = new ScreenTransferAutoStretchDialog;
+   var dialog = new BatchSTFStretchDialog;
    dialog.execute();
 }
 

@@ -24,7 +24,7 @@
 #include <pjsr/UndoFlag.jsh>
 
 var IMAGE_RENAME_TITLE = "ImageBatchManager";
-var IMAGE_RENAME_VERSION = "3.1";
+var IMAGE_RENAME_VERSION = "3.2-beta1";
 var IMAGE_RENAME_SETTINGS_ROOT = "GrandPaClanger/ImageRenameByFilter";
 
 var DEFAULT_MAPPINGS =
@@ -675,6 +675,7 @@ function showHelpDialog()
       "[6] SAVE & OVERWRITE SELECTED\n" +
       "- Choose Save selected images only on Step 1, then tick images on Step 2.\n" +
       "- It saves selected open images to their current image names in their source folders.\n" +
+      "- If selected images were created in PixInsight and have no source folder, choose one destination folder for those new images.\n" +
       "- It overwrites after one confirmation, so check the Preview New column first.";
 
    (new MessageBox( helpText, IMAGE_RENAME_TITLE + " Help", StdIcon_Information,
@@ -694,7 +695,9 @@ function overwriteTargetId( item )
 
 function overwriteTargetPath( item, outputDirectory )
 {
-   var directory = outputDirectory.length > 0 ? outputDirectory : item.sourceDirectory;
+   var directory = item.sourceDirectory.length > 0 ?
+      item.sourceDirectory :
+      outputDirectory;
    var extension = item.extension.length > 0 ? item.extension : ".xisf";
 
    if ( directory.length == 0 )
@@ -706,15 +709,15 @@ function overwriteTargetPath( item, outputDirectory )
 function overwriteSelectedCurrentFiles( plan, outputDirectory )
 {
    var selected = 0;
-   var missingPath = new Array;
+   var sourceLess = new Array;
 
    for ( var i = 0; i < plan.length; ++i )
       if ( plan[i].selected )
       {
          ++selected;
 
-         if ( overwriteTargetPath( plan[i], outputDirectory ).length == 0 )
-            missingPath.push( plan[i].currentId );
+         if ( plan[i].sourceDirectory.length == 0 )
+            sourceLess.push( plan[i].currentId );
       }
 
    if ( selected == 0 )
@@ -724,19 +727,28 @@ function overwriteSelectedCurrentFiles( plan, outputDirectory )
       return;
    }
 
-   if ( missingPath.length > 0 )
-      throw new Error( "The following selected image(s) do not expose an existing source folder and cannot be saved:\n\n" +
-                       missingPath.join( "\n" ) );
+   if ( sourceLess.length > 0 && outputDirectory.length == 0 )
+   {
+      var directoryDialog = new GetDirectoryDialog;
+      directoryDialog.caption =
+         "Select a folder for newly created images";
+      directoryDialog.initialPath =
+         settingReadString( "outputDirectory", "" );
 
-   var targetDescription = outputDirectory.length > 0 ?
-      "the selected output folder" :
-      "each image source folder";
+      if ( !directoryDialog.execute() )
+         return;
 
-   var message =
+      outputDirectory = directoryDialog.directory;
+      settingWriteString( "outputDirectory", outputDirectory );
+   }
+
+   var message = sourceLess.length > 0 ?
+      "Save " + selected.toString() + " selected image(s)?\n\n" +
+      "Images with source files will be overwritten in their existing source folders.\n\n" +
+      "Newly created images will be saved to:\n" + outputDirectory :
       "Overwrite the existing files for " + selected.toString() +
       " selected image(s)?\n\n" +
-      "This saves each selected open image to its current image name in " +
-      targetDescription + ".";
+      "Each selected image will be saved to its current image name in its source folder.";
 
    if ( (new MessageBox( message, IMAGE_RENAME_TITLE, StdIcon_Warning,
                          StdButton_Yes, StdButton_No )).execute() != StdButton_Yes )
@@ -2080,7 +2092,7 @@ function ImageRenameByFilterDialog()
          return dialog.renameMode() == "single" ?
             "Tick exactly one open image window to rename." :
             (dialog.renameMode() == "saveOnly" ?
-               "Tick the open image windows to save, then use Save && Overwrite Selected." :
+               "Tick the open image windows to save, then use Save && Overwrite Selected. Newly created images will prompt for a destination folder." :
                "Tick the open image windows to include in the batch.");
       if ( step == 2 )
          return "Choose what should happen to the selected source images after a save.";
@@ -2181,7 +2193,7 @@ function ImageRenameByFilterDialog()
       var saveText = dialog.renameMode() == "single" ?
          "Single-image rename only. Files will not be saved, closed, or collapsed." :
          (dialog.renameMode() == "saveOnly" ?
-         "Save-only overwrite to each image source folder. Images will not be renamed, closed, or collapsed." :
+         "Save-only to each existing image source folder. Newly created images will prompt for a destination folder. Images will not be renamed, closed, or collapsed." :
          (dialog.saveCheckBox.checked ?
          "Save renamed images to: " +
             (outputDirectory.length > 0 ? outputDirectory :
@@ -2672,7 +2684,7 @@ function ImageRenameByFilterDialog()
    this.saveOverwriteButton.text = "Save && Overwrite Selected";
    this.saveOverwriteButton.icon = this.scaledResource( ":/icons/save.png" );
    this.saveOverwriteButton.toolTip =
-      "Save selected open images to their current image names in their source folders, overwriting existing files after one confirmation. This does not rename, close, or collapse images.";
+      "Save source-backed images to their existing folders. If selected images were created in PixInsight, choose one folder for those new images. This does not rename, close, or collapse images.";
    this.saveOverwriteButton.onClick = function()
    {
       try

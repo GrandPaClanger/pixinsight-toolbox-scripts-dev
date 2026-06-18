@@ -45,15 +45,15 @@ menu after PixInsight refreshes scripts.
 
 ## Scripts
 
-### ScreenTransferAutoStretch
+### BatchSTFStretch
 
 Menu:
 
-`Script > Chapel Astro Utilities > ScreenTransferAutoStretch`
+`Script > Chapel Astro Utilities > BatchSTFStretch`
 
 Version:
 
-`1.0.0-beta1`
+`1.0.0-beta2`
 
 Purpose:
 
@@ -73,7 +73,7 @@ Menu:
 
 Version:
 
-`3.1`
+`3.2-beta1`
 
 Purpose:
 
@@ -153,7 +153,9 @@ open images.
 on Step 1 and selecting the images to save on Step 2.
 
 It saves the checked open images to their current image names in their source
-folders after one confirmation. It does not rename, close, or collapse images.
+folders after one confirmation. For selected images created inside PixInsight
+with no source path, it asks for one destination folder and saves those new
+images there. It does not rename, close, or collapse images.
 
 ### MatchOpenImageSizes
 
@@ -204,9 +206,19 @@ PixInsight menu entry and dialog title are `ImageBatchManager`.
 
 The update package is:
 
-`packages/ChapelAstroUtilities-3.2-beta1.zip`
+`packages/ChapelAstroUtilities-3.2-beta2.zip`
 
 ## Change Log
+
+### Chapel Astro Utilities 3.2-beta2
+
+- DEV beta package.
+- Renamed ScreenTransferAutoStretch to BatchSTFStretch 1.0.0-beta2 while
+  retaining its installed script filename for update compatibility.
+- Updated ImageBatchManager to 3.2-beta1.
+- Save-only now keeps source-backed images in their existing source folders and
+  asks for a destination folder when selected images were created in PixInsight
+  and have no source path.
 
 ### Chapel Astro Utilities 3.2-beta1
 
