@@ -51,6 +51,27 @@ menu after PixInsight refreshes scripts.
 
 ## Scripts
 
+### ImageDisplayManager
+
+Menu:
+
+`Script > Chapel Astro Utilities > ImageDisplayManager`
+
+Version:
+
+`1.0.0-beta1`
+
+Purpose:
+
+Combines the display-focused BatchSTFStretch and MatchOpenImageSizes workflows
+in one dialog.
+
+- The clearly bordered upper section selects images and applies or resets a
+  linked or unlinked automatic ScreenTransferFunction.
+- The separate lower section selects a reference image and matches all other
+  open images to its zoom, window frame, and pixel dimensions where required.
+- A shared refresh control updates both sections when open images change.
+
 ### BatchSTFStretch
 
 Menu:
@@ -210,11 +231,21 @@ PixInsight menu entry and dialog title are `ImageBatchManager`.
 
 `src/scripts/Toolbox/ScreenTransferAutoStretch.js`
 
+`src/scripts/Toolbox/ImageDisplayManager.js`
+
 The update package is:
 
-`packages/ChapelAstroUtilities-3.2-beta2.zip`
+`packages/ChapelAstroUtilities-3.3-beta1.zip`
 
 ## Change Log
+
+### Chapel Astro Utilities 3.3-beta1
+
+- DEV beta package.
+- Added ImageDisplayManager 1.0.0-beta1.
+- Combined Batch Auto Stretch in a distinct upper panel with Match Image Sizes
+  in a separate lower panel.
+- Kept BatchSTFStretch and MatchOpenImageSizes available as standalone tools.
 
 ### Chapel Astro Utilities 3.2-beta2
 

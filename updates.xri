@@ -6,17 +6,17 @@
       </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="packages/ChapelAstroUtilities-3.2-beta2.zip"
-               sha1="6988231aee05849a97a0c5e4371a1c67e6e01dbe"
+      <package fileName="packages/ChapelAstroUtilities-3.3-beta1.zip"
+               sha1="975cb585a86edabd2544b4d126e3262e09ed8932"
                type="script"
-               releaseDate="20260618">
+               releaseDate="20260619">
          <title>
-            Chapel Astro Utilities 3.2-beta2
+            Chapel Astro Utilities 3.3-beta1
          </title>
          <description>
             <p>
-               DEV beta package. Installs BatchSTFStretch 1.0.0-beta2, ImageBatchManager 3.2-beta1, and MatchOpenImageSizes 1.0.4 under Script &gt; Chapel Astro Utilities.
-               BatchSTFStretch is the renamed batch screen-stretch utility. ImageBatchManager save-only now asks for a destination folder for newly created images while preserving existing source folders for opened images.
+               DEV beta package. Adds ImageDisplayManager 1.0.0-beta1 alongside BatchSTFStretch, ImageBatchManager, and MatchOpenImageSizes under Script &gt; Chapel Astro Utilities.
+               ImageDisplayManager combines a distinct upper Batch Auto Stretch section with a separate lower Match Image Sizes section.
             </p>
          </description>
       </package>
