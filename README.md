@@ -59,7 +59,7 @@ Menu:
 
 Version:
 
-`1.0.0-beta2`
+`1.0.0-beta3`
 
 Purpose:
 
@@ -237,9 +237,16 @@ PixInsight menu entry and dialog title are `ImageBatchManager`.
 
 The update package is:
 
-`packages/ChapelAstroUtilities-3.3-beta2.zip`
+`packages/ChapelAstroUtilities-3.3-beta3.zip`
 
 ## Change Log
+
+### Chapel Astro Utilities 3.3-beta3
+
+- DEV beta package.
+- Updated ImageDisplayManager to 1.0.0-beta3.
+- Fixed modeless startup on PixInsight builds that expose the global
+  `processEvents()` function instead of `CoreApplication.processEvents()`.
 
 ### Chapel Astro Utilities 3.3-beta2
 

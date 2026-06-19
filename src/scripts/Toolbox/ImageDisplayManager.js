@@ -13,7 +13,7 @@
 #feature-info  Apply or reset automatic screen stretches, then match open image windows to a selected reference.
 
 var TITLE = "ImageDisplayManager";
-var VERSION = "1.0.0-beta2";
+var VERSION = "1.0.0-beta3";
 
 var FrameStyle_Box = 1;
 var ResizeMode_AbsolutePixels = 1;
@@ -777,7 +777,7 @@ function main()
     */
    while ( dialog.visible )
    {
-      CoreApplication.processEvents();
+      processEvents();
       msleep( 20 );
    }
 }

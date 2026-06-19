@@ -6,17 +6,17 @@
       </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="packages/ChapelAstroUtilities-3.3-beta2.zip"
-               sha1="c99595fdc647374d2bc9584fbc2bc2a9e0dd6c1a"
+      <package fileName="packages/ChapelAstroUtilities-3.3-beta3.zip"
+               sha1="0a06e6341f15c17fd35c2d4f3b6b8265d52e7d21"
                type="script"
                releaseDate="20260619">
          <title>
-            Chapel Astro Utilities 3.3-beta2
+            Chapel Astro Utilities 3.3-beta3
          </title>
          <description>
             <p>
-               DEV beta package. Updates ImageDisplayManager to 1.0.0-beta2 alongside BatchSTFStretch, ImageBatchManager, and MatchOpenImageSizes under Script &gt; Chapel Astro Utilities.
-               ImageDisplayManager is now modeless and adds Use Active Image for selecting the Match Image Sizes reference from the PixInsight workspace.
+               DEV beta package. Updates ImageDisplayManager to 1.0.0-beta3 alongside BatchSTFStretch, ImageBatchManager, and MatchOpenImageSizes under Script &gt; Chapel Astro Utilities.
+               Fixes modeless startup on PixInsight builds that expose the global processEvents function instead of CoreApplication.processEvents.
             </p>
          </description>
       </package>
