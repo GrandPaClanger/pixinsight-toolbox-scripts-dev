@@ -59,7 +59,7 @@ Menu:
 
 Version:
 
-`1.0.0-beta1`
+`1.0.0-beta2`
 
 Purpose:
 
@@ -71,6 +71,8 @@ in one dialog.
 - The separate lower section selects a reference image and matches all other
   open images to its zoom, window frame, and pixel dimensions where required.
 - A shared refresh control updates both sections when open images change.
+- The modeless dialog stays open while image windows are selected or inspected.
+- `Use Active Image` sets the size reference from the currently active window.
 
 ### BatchSTFStretch
 
@@ -235,9 +237,18 @@ PixInsight menu entry and dialog title are `ImageBatchManager`.
 
 The update package is:
 
-`packages/ChapelAstroUtilities-3.3-beta1.zip`
+`packages/ChapelAstroUtilities-3.3-beta2.zip`
 
 ## Change Log
+
+### Chapel Astro Utilities 3.3-beta2
+
+- DEV beta package.
+- Updated ImageDisplayManager to 1.0.0-beta2.
+- Made ImageDisplayManager modeless so image windows can be selected and
+  inspected while the utility remains open.
+- Added Use Active Image for setting the Match Image Sizes reference directly
+  from the currently active PixInsight image window.
 
 ### Chapel Astro Utilities 3.3-beta1
 

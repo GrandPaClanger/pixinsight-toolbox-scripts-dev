@@ -13,7 +13,7 @@
 #feature-info  Apply or reset automatic screen stretches, then match open image windows to a selected reference.
 
 var TITLE = "ImageDisplayManager";
-var VERSION = "1.0.0-beta1";
+var VERSION = "1.0.0-beta2";
 
 var FrameStyle_Box = 1;
 var ResizeMode_AbsolutePixels = 1;
@@ -475,7 +475,8 @@ function ImageDisplayManagerDialog()
    this.introduction = new Label( this );
    this.introduction.text =
       "Use the upper section to control the display stretch, then use the " +
-      "lower section to make the open image windows match a reference image.";
+      "lower section to make the open image windows match a reference image. " +
+      "This modeless window can remain open while you select and inspect images.";
    this.introduction.wordWrapping = true;
    this.introduction.textAlignment = TextAlign_Left | TextAlign_VertCenter;
 
@@ -576,10 +577,16 @@ function ImageDisplayManagerDialog()
 
    this.referenceCombo = new ComboBox( this.matchGroup );
 
+   this.useActiveButton = new PushButton( this.matchGroup );
+   this.useActiveButton.text = "Use Active Image";
+   this.useActiveButton.toolTip =
+      "Use the currently active PixInsight image window as the size reference.";
+
    this.referenceSizer = new HorizontalSizer;
    this.referenceSizer.spacing = 8;
    this.referenceSizer.add( this.referenceLabel );
    this.referenceSizer.add( this.referenceCombo, 100 );
+   this.referenceSizer.add( this.useActiveButton );
 
    this.matchButton = new PushButton( this.matchGroup );
    this.matchButton.text = "Match Other Images To Reference";
@@ -713,6 +720,25 @@ function ImageDisplayManagerDialog()
       dialog.refreshImages();
    };
 
+   this.useActiveButton.onClick = function()
+   {
+      try
+      {
+         if ( ImageWindow.activeWindow.isNull )
+            throw new Error( "Click an image window in the PixInsight workspace first." );
+
+         var activeId = ImageWindow.activeWindow.mainView.id;
+         fillReferenceCombo( dialog.referenceCombo, activeId );
+         dialog.statusLabel.text =
+            "Reference image set to the active image: " + activeId + ".";
+      }
+      catch ( error )
+      {
+         (new MessageBox( error.message, TITLE,
+                          StdIcon_Information, StdButton_Ok )).execute();
+      }
+   };
+
    this.closeButton.onClick = function()
    {
       dialog.cancel();
@@ -742,7 +768,18 @@ function main()
    }
 
    var dialog = new ImageDisplayManagerDialog;
-   dialog.execute();
+   dialog.show();
+
+   /*
+    * Keep the JavaScript instance alive while allowing PixInsight to process
+    * workspace interaction. This is intentionally modeless: users can click
+    * image windows, change the active image, and return to this utility.
+    */
+   while ( dialog.visible )
+   {
+      CoreApplication.processEvents();
+      msleep( 20 );
+   }
 }
 
 main();

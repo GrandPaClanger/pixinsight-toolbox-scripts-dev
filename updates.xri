@@ -6,17 +6,17 @@
       </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="packages/ChapelAstroUtilities-3.3-beta1.zip"
-               sha1="975cb585a86edabd2544b4d126e3262e09ed8932"
+      <package fileName="packages/ChapelAstroUtilities-3.3-beta2.zip"
+               sha1="c99595fdc647374d2bc9584fbc2bc2a9e0dd6c1a"
                type="script"
                releaseDate="20260619">
          <title>
-            Chapel Astro Utilities 3.3-beta1
+            Chapel Astro Utilities 3.3-beta2
          </title>
          <description>
             <p>
-               DEV beta package. Adds ImageDisplayManager 1.0.0-beta1 alongside BatchSTFStretch, ImageBatchManager, and MatchOpenImageSizes under Script &gt; Chapel Astro Utilities.
-               ImageDisplayManager combines a distinct upper Batch Auto Stretch section with a separate lower Match Image Sizes section.
+               DEV beta package. Updates ImageDisplayManager to 1.0.0-beta2 alongside BatchSTFStretch, ImageBatchManager, and MatchOpenImageSizes under Script &gt; Chapel Astro Utilities.
+               ImageDisplayManager is now modeless and adds Use Active Image for selecting the Match Image Sizes reference from the PixInsight workspace.
             </p>
          </description>
       </package>
