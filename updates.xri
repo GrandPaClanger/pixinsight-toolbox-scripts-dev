@@ -6,17 +6,17 @@
       </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="packages/ChapelAstroUtilities-3.3-beta4.zip"
-               sha1="ee2904700b1b8748bdd63b702d20b73ba4be247d"
+      <package fileName="packages/ChapelAstroUtilities-3.3-beta5.zip"
+               sha1="2367cd081bf6e0f59559aaa06bcb8e5958fa80b3"
                type="script"
-               releaseDate="20260619">
+               releaseDate="20260712">
          <title>
-            Chapel Astro Utilities 3.3-beta4
+            Chapel Astro Utilities 3.3-beta5
          </title>
          <description>
             <p>
-               DEV cleanup package. Installs BatchSTFStretch, ImageBatchManager, and MatchOpenImageSizes under Script &gt; Chapel Astro Utilities.
-               Removes the experimental ImageDisplayManager combined utility because PixInsight PJSR cannot provide the required genuinely modeless workspace interaction.
+               DEV beta package. Installs BatchSTFStretch, ImageBatchManager, and MatchOpenImageSizes under Script &gt; Chapel Astro Utilities.
+               Updates ImageBatchManager so append-suffix saves preserve FITS header keywords in the saved output file.
             </p>
          </description>
       </package>

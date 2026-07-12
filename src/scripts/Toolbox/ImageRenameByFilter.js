@@ -24,7 +24,7 @@
 #include <pjsr/UndoFlag.jsh>
 
 var IMAGE_RENAME_TITLE = "ImageBatchManager";
-var IMAGE_RENAME_VERSION = "3.2-beta1";
+var IMAGE_RENAME_VERSION = "3.2-beta2";
 var IMAGE_RENAME_SETTINGS_ROOT = "GrandPaClanger/ImageRenameByFilter";
 
 var DEFAULT_MAPPINGS =
@@ -894,6 +894,34 @@ function saveWindowAs( window, path )
    window.saveAs( path, false, false, true, false );
 }
 
+function copyFITSKeywords( sourceWindow, targetWindow )
+{
+   try
+   {
+      if ( typeof sourceWindow.keywords == "undefined" ||
+           typeof targetWindow.keywords == "undefined" )
+         return;
+
+      var sourceKeywords = sourceWindow.keywords;
+      var targetKeywords = new Array;
+
+      for ( var i = 0; i < sourceKeywords.length; ++i )
+      {
+         var keyword = sourceKeywords[i];
+         targetKeywords.push( new FITSKeyword( keyword.name,
+                                               keyword.value,
+                                               keyword.comment ) );
+      }
+
+      targetWindow.keywords = targetKeywords;
+   }
+   catch ( error )
+   {
+      Console.warningln( "Could not copy FITS header keywords to the temporary save copy: " +
+                         error.message );
+   }
+}
+
 function duplicateWindow( window, id )
 {
    try
@@ -918,6 +946,7 @@ function duplicateWindow( window, id )
       copy.mainView.beginProcess( UndoFlag_NoSwapFile );
       copy.mainView.image.assign( sourceImage );
       copy.mainView.endProcess();
+      copyFITSKeywords( window, copy );
       copy.mainView.id = id;
       cleanCaption( copy, id );
       return copy;
